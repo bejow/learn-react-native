@@ -3,9 +3,10 @@ import {View} from 'react-native';
 import firebase from 'firebase' //get this via >>npm install --save firebase
 import {Header, Button, Spinner, CardSection} from './components/common';
 import LoginForm from './components/LoginForm.js';
+import PostList from './components/PostList.js';
 
 class App extends Component{
-	state = { loggedIn: null };
+	state = { loggedIn: true };
 
 	componentWillMount(){
 		//connecting with firebase project
@@ -31,9 +32,12 @@ class App extends Component{
 		switch (this.state.loggedIn){
 			case true: 
 				return(
-					<CardSection>
-						<Button onPress={() => firebase.auth().signOut()}>Log Out</Button>
-					</CardSection>
+					<View>
+						<PostList/>
+						<CardSection>
+							<Button onPress={() => firebase.auth().signOut()}>Log Out</Button>
+						</CardSection>
+					</View>
 				)
 			case false:
 				return <LoginForm/>;

@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
+import VoteStatus from './VoteStatus.js'
 
-const Post = ({content, score}) => {
+const Post = ({content, onButtonPress}) => {
 	return (
 		<View style={styles.containerStyle}>
-			<VoteStatus/>
+			<VoteStatus onButtonPress={onButtonPress} score={content.score}/>
+			<Text>{content.postContent}</Text>
 		</View>
 		)
 }
